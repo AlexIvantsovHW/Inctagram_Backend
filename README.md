@@ -1,12 +1,21 @@
 # SWAGGER DOCUMENTATION
 
-### Authorization
+## Authorization
 
-##### Login
+### Login (POST) 
 ```sh
 /api/auth/login
-Example
+```
+
+#### Example
+##### Body
+```sh
 {"name":"Alex","password":"Alexander12345!"}
+```
+##### Response
+###### 200
+```sh
+{status:200}
 ```
 
 ##### Google

@@ -2,6 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
   "repository": "https://github.com/AlexIvantsovHW/Inctagram_Backend.git",
   "author": "Alexander Ivantsov <alexander.ivantsov.hw@gmail.com>",
   "license": "MIT",

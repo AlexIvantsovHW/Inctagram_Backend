@@ -2,8 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": "https://github.com/AlexIvantsovHW/Inctagram_Backend.git",
   "author": "Alexander Ivantsov <alexander.ivantsov.hw@gmail.com>",

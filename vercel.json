@@ -6,5 +6,10 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [{ "src": "./(.*)", "dest": "/" }]
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/auth/.*", "dest": "/src/routes/auth/authRoutes.js" },
+    { "src": "/api/.*", "dest": "/src/routes/mainRoutes.js" },
+    { "src": "/.*", "dest": "/src/index.js" }
+  ]
 }

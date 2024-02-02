@@ -8,8 +8,8 @@
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/auth/.*", "dest": "/src/routes/auth/authRoutes.js" },
-    { "src": "/.*", "dest": "/src/routes/mainRoutes.js" },
+    { "src": "/api/auth/.*", "dest": "/src/routes/auth/authRoutes.js" },
+    { "src": "/api/.*", "dest": "/src/routes/mainRoutes.js" },
     { "src": "/.*", "dest": "/src/index.js" }
   ]
 }

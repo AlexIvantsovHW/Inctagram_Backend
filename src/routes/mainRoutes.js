@@ -6,7 +6,7 @@ import { logoutRouter } from "./logout/logout.js";
 const mainRouter = express.Router();
 
 mainRouter.get("/", (req, res) => {
-  res.send("Hello world");
+  res.send("Роут для регистрации");
 });
 
 mainRouter.use("/auth", authRouter);

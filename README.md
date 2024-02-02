@@ -2,10 +2,15 @@
 
 ### Authorization
 
-##### login
+##### Login
 ```sh
 /api/auth/login
 ```
+Example
+```sh
+{"name":"Alex","password":"Alexander12345!"}
+```
+
 ##### Google
 ```sh
 /api/auth/google
@@ -24,3 +29,4 @@
 ```sh
 /api/logout
 ```
+

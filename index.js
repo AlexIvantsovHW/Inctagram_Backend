@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({ origin: "*" }));
-app.use("/", mainRoutes);
+app.use("/api", mainRoutes);
 
 app.listen(port, () => {
   console.log(`Server is started on ${port} port.`);

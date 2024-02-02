@@ -5,9 +5,7 @@
 ##### Login
 ```sh
 /api/auth/login
-```
 Example
-```sh
 {"name":"Alex","password":"Alexander12345!"}
 ```
 

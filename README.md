@@ -1,5 +1,11 @@
-# Inctagram_Backend
+# SWAGGER DOCUMENTATION
 
+### Authorization
 ```sh
-api
+/api/auth
 ```
+##### login
+```sh
+/api/auth/login
+```
+

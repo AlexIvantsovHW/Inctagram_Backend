@@ -20,7 +20,7 @@
 ```sh
 /api/registration
 ```
-### Logoit
+### Logout
 ```sh
 /api/logout
 ```

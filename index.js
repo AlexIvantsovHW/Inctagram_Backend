@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.use(cors({ origin: "*" }));
 app.use("/api", mainRoutes);
 app.get("/", (req, res) => {
-  res.send("Hello world!");
+  res.send("Hello Valera, this page for you!");
 });
 
 app.listen(port, () => {

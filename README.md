@@ -17,13 +17,19 @@
 ```sh
 {status:200}
 ```
+``
 
-##### Google
+### Google (POST)
 ```sh
 /api/auth/google
 ```
+#### Example
+##### Body
+```sh
+{"name":"Alex","password":"Alexander12345!"}
+```
 
-##### Git
+### Git (POST)
 ```sh
 /api/auth/git
 ```

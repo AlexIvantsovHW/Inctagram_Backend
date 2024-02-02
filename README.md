@@ -1,1 +1,7 @@
-# Inctagram_Backend
+# SWAGGER DOCUMENTATION
+
+##### Registration
+
+```sh
+/api/registration
+```

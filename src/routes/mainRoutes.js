@@ -1,16 +1,15 @@
 import express from "express";
 import { authRouter } from "./auth/authRoutes.js";
 import { registrRouter } from "./registration/registration.js";
-import { logoutRouter } from "./logout/logout.js";
 
 const mainRouter = express.Router();
-
+const handleCatch = (res, error) => {
+  res.status(500).json({ error });
+};
 mainRouter.get("/", (req, res) => {
-  res.send("Роут для регистрации");
+  res.send("Main router");
 });
 
 mainRouter.use("/auth", authRouter);
 mainRouter.use("/registration", registrRouter);
-mainRouter.use("/logout", logoutRouter);
-
 export default mainRouter;

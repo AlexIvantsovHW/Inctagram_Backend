@@ -1,7 +1,6 @@
-import express from "express";
+/* import express from "express";
+import { logoutUser } from "../../controllers/user.controller.js";
 
 export const logoutRouter = express.Router();
 
-logoutRouter.get("/", (req, res) => {
-  res.send("Логаут");
-});
+logoutRouter.get("/", logoutUser); */

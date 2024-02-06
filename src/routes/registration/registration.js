@@ -1,11 +1,6 @@
 import express from "express";
+import { createUser } from "../../controllers/user.controller.js";
 
 export const registrRouter = express.Router();
 
-registrRouter.get("/login", (req, res) => {
-  res.send("Страница входа");
-});
-
-registrRouter.get("/", (req, res) => {
-  res.send("Страница регистрации");
-});
+registrRouter.post("/", createUser);

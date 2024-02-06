@@ -5,8 +5,12 @@ import mainRoutes from "./src/routes/mainRoutes.js";
 import { connectToDb, getDb } from "./db.js";
 import { ObjectId } from "mongodb";
 const app = express();
+
 const port = process.env.PORT | 3001;
 let db;
+const handleCatch = (res, error) => {
+  res.status(500).json({ error });
+};
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use((req, res, next) => {
@@ -38,14 +42,40 @@ app.get("/users", (req, res) => {
     .find()
     .forEach((user) => users.push(user))
     .then(() => res.status(200).send(users))
-    .catch((err) => res.status(500).json("Something goes wrong...."));
+    .catch((err) => handleCatch(res, "Something goes wrong...."));
 });
 app.get("/users/:id", (req, res) => {
   if (ObjectId.isValid(req.params.id)) {
     db.collection("Users")
       .findOne({ _id: new ObjectId(req.params.id) })
       .then((doc) => res.status(200).send(doc))
-      .catch((err) => res.status(500).json("Something goes wrong...."));
+      .catch((err) => handleCatch(res, "Something goes wrong...."));
+  } else {
+    handleCatch(res, "Id is wrong");
+  }
+});
+app.delete("/users/:id", (req, res) => {
+  if (ObjectId.isValid(req.params.id)) {
+    db.collection("Users")
+      .deleteOne({ _id: new ObjectId(req.params.id) })
+      .then((doc) => res.status(200).send(doc))
+      .catch((err) => handleCatch(res, "Something goes wrong...."));
+  } else {
+    res.status(500).json("Wrong Id");
+  }
+});
+app.post("/users", (req, res) => {
+  db.collection("Users")
+    .insertOne(req.body)
+    .then((result) => res.status(200).send(result))
+    .catch((err) => handleCatch(res, "Something goes wrong...."));
+});
+app.patch("/users/:id", (req, res) => {
+  if (ObjectId.isValid(req.params.id)) {
+    db.collection("Users")
+      .updateOne({ _id: new ObjectId(req.params.id) }, { $set: req.body })
+      .then((result) => res.status(200).send(result))
+      .catch((err) => handleCatch(res, "Something goes wrong...."));
   } else {
     res.status(500).json("Wrong Id");
   }

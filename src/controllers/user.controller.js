@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import { User } from "./../../shared/db/models/user.module.js";
 import passport from 'passport';
 import { Validate } from '../routes/registration/validation/validation.js';
+import jwt from 'jsonwebtoken';
 
 export const handleCatch = (res, error) => {
   res.status(500).json({ error });
@@ -24,9 +25,6 @@ export const deleteUser = (req, res) => {
 };
 
 export const loginUser = (req, res, next) => {
-  // User.findById({ _id: new ObjectId(req.params.id) })
-  //   .then((doc) => res.status(200).send(doc))
-  //   .catch((err) => handleCatch(res, `Something goes wrong.... ${err}`));
   const validator = new Validate(req.body.password, req.body.email);
   const validationResponse = validator.fullFormValidation();
 
@@ -46,8 +44,10 @@ export const loginUser = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) {
         return next(err);
-      }   
-      return res.status(200).json(user);
+      }
+
+      const accessToken = jwt.sign({ id: user.id }, 'secret-key', { expiresIn: '1h' });   
+      return res.status(200).json({accessToken});
     });
   })(req, res, next);
 };

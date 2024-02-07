@@ -6,7 +6,8 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon app.js"
   },
   "repository": "https://github.com/AlexIvantsovHW/Inctagram_Backend.git",
   "author": "Alexander Ivantsov <alexander.ivantsov.hw@gmail.com>",
@@ -23,6 +24,7 @@
     "mongoose": "^8.1.1",
     "nodemon": "^3.0.3",
     "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "upload": "^1.3.2"
   }
 }

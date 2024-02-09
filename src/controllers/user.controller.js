@@ -47,7 +47,7 @@ export const loginUser = (req, res, next) => {
       }
 
       const accessToken = jwt.sign({ id: user.id }, 'secret-key', { expiresIn: '1h' });   
-      return res.status(200).json({accessToken});
+      return res.status(200).json({accessToken, user});
     });
   })(req, res, next);
 };

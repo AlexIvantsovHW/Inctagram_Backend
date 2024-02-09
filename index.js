@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import bodyParser from "body-parser";
 import mainRoutes from "./src/routes/mainRoutes.js";
@@ -21,7 +22,7 @@ initialPassport(passport);
 app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/api", mainRoutes);
+app.use("/api/v1", mainRoutes);
 
 app.listen(port, () => {
   console.log(`Server is started on ${port} port.`);

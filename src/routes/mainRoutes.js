@@ -1,6 +1,5 @@
 import express from "express";
 import { authRouter } from "./auth/authRoutes.js";
-import { registrRouter } from "./registration/registration.js";
 
 const mainRouter = express.Router();
 const handleCatch = (res, error) => {
@@ -11,5 +10,4 @@ mainRouter.get("/", (req, res) => {
 });
 
 mainRouter.use("/auth", authRouter);
-mainRouter.use("/registration", registrRouter);
 export default mainRouter;

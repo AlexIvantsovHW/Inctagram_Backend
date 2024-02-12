@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { User } from '../../shared/db/models/user.module.js';
 import { PasswordResetToken } from '../../shared/db/models/password.module.js';
-import { sendPasswordResetEmail } from '../../shared/configs/nodemailer-config.js';
+import { sendEmail } from '../../shared/configs/nodemailer-config.js';
 import { Validate } from '../routes/registration/validation/validation.js';
 import { verifyRecaptcha } from './services/verifyRecaptcha.js';
 import mongoose from 'mongoose';
@@ -32,7 +32,15 @@ export const requestPasswordReset = async (req, res) => {
       });
   
       await passwordResetToken.save();
-      await sendPasswordResetEmail(email, passwordRecoveryCode);
+
+      const resetUrl = `https://inctagram-front.vercel.app/auth/password-reset?code=${passwordRecoveryCode}`;
+      
+      await sendEmail({
+        email: user.email,
+        subject: 'Сброс пароля',
+        url: resetUrl,
+        message: 'Для смены пароля перейдите по ссылке:'
+      });
   
       res.status(200).send('Ссылка для сброса пароля отправлена на электронную почту');
     } catch (err) {

@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer';
 
-console.log(process.env.SMTP_USER)
-
 const transporter = nodemailer.createTransport({
     host: 'smtp.mail.ru',
     port: 465,
@@ -15,20 +13,20 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export const sendPasswordResetEmail = async (email, token) => {
-  const resetUrl = `https://inctagram-front.vercel.app/auth/password-reset?code=${token}`;
-
+export const sendEmail = async ({ email, subject, url, message }) => {
+  
   const mailOptions = {
     from: process.env.SMTP_USER,
     to: email,
-    subject: 'Смена пароля',
-    html: `<p>Для смены пароля перейдите по ссылке: <a href="${resetUrl}">${resetUrl}</a></p>`
+    subject: subject,
+    html: `<p>${message} <a href="${url}">${url}</a></p>`
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Ссылка для сброса пароля отправлена на ${email}`);
+    console.log(`Письмо отправлено на ${email}`);
   } catch (error) {
     console.error('Ошибка при отправке письма:', error);
   }
 };
+
